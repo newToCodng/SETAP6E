@@ -1,0 +1,40 @@
+{
+    "users": {
+        "abdul": {
+            "password": "Naruto1234",
+            "expenses": [],
+            "income": [],
+            "budget": 0
+        },
+        "Naruto": {
+            "password": "Naruto=12345",
+            "expenses": [
+                {
+                    "category": "Salary",
+                    "amount": 300.0
+                }
+            ],
+            "income": [],
+            "budget": 0
+        },
+        "naruto": {
+            "password": "Naruto=1234",
+            "expenses": [],
+            "income": [],
+            "budget": 0
+        },
+        "Naruto1": {
+            "password": "Naruto1234",
+            "expenses": [],
+            "income": [],
+            "budget": 0
+        },
+        "sufyan": {
+            "password": "Naruto=1234",
+            "expenses": [],
+            "income": [],
+            "budget": 0
+        }
+    },
+    "current_user": null
+}
