@@ -1,5 +1,5 @@
 # main.py
-from FinanceTrackerss import FinanceTracker
+from FinanceTracker import FinanceTracker
 from FinanceTrackerApp import FinanceTrackerApp
 
 

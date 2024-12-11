@@ -1,4 +1,4 @@
-from FinanceTrackerss import FinanceTracker
+from FinanceTracker import FinanceTracker
 from IFinanceTracker import IFinanceTracker
 
 
@@ -11,7 +11,7 @@ class FinanceTrackerApp:
 
     def handle_login_check(self):
         # If user is logged in, proceed to the main menu
-        if self.tracker.get_current_user():
+        if self.tracker.getCurrentUser():
             return True
         return False
 
@@ -19,7 +19,7 @@ class FinanceTrackerApp:
         attempts = 0
         while attempts < 5:
             username = input("Enter username: ")
-            if self.tracker.user_exists(username):
+            if self.tracker.userExists(username):
                 self.print_error("Username already exists. Please try a different username.")
                 attempts += 1
             else:
@@ -45,6 +45,7 @@ class FinanceTrackerApp:
         while True:
             if not self.handle_login_check():  # Check if user is logged in
                 print("\n--- Personal Finance Tracker ---")
+                print("Welcome!")
                 print("1. Register")
                 print("2. Login")
                 print("3. Exit")
@@ -62,7 +63,7 @@ class FinanceTrackerApp:
                 else:
                     self.print_error("Invalid choice. Please try again.")
             else:
-                print(f"\nWelcome, {self.tracker.get_current_user()}!")
+                print(f"\nWelcome, {self.tracker.getCurrentUser()}!")
                 print("--- Personal Finance Tracker ---")
                 print("1. Logout")
                 print("2. Add Expense")
@@ -78,24 +79,24 @@ class FinanceTrackerApp:
                     category = input("Enter expense category: ")
                     try:
                         amount = float(input("Enter expense amount: "))
-                        print(self.tracker.add_expense(category, amount))
+                        print(self.tracker.addExpense(category, amount))
                     except ValueError:
                         self.print_error("Invalid amount. Please enter a valid number.")
                 elif choice == '3':
                     source = input("Enter income source: ")
                     try:
                         amount = float(input("Enter income amount: "))
-                        print(self.tracker.add_income(source, amount))
+                        print(self.tracker.addIncome(source, amount))
                     except ValueError:
                         self.print_error("Invalid amount. Please enter a valid number.")
                 elif choice == '4':
                     try:
                         amount = float(input("Enter budget amount: "))
-                        print(self.tracker.set_budget(amount))
+                        print(self.tracker.setBudget(amount))
                     except ValueError:
                         self.print_error("Invalid amount. Please enter a valid number.")
                 elif choice == '5':
-                    report = self.tracker.view_report()
+                    report = self.tracker.viewReport()
                     print("\n--- Financial Report ---")
                     for key, value in report.items():
                         print(f"{key}: ${value:.2f}")
