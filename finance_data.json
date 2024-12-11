@@ -34,6 +34,15 @@
             "expenses": [],
             "income": [],
             "budget": 0
+        },
+        "abdulbasitmuhammedjamiu@gamil.com": {
+            "username": "Naruto=1234",
+            "password": "$2b$12$ZZc7xtKgOW3pydg1i8Gjleioa.U0YsMp8U/nOMQcW3riQVSVYaTB6",
+            "name": "Abdulbasit Muhammedjamiu",
+            "age": "20",
+            "expenses": [],
+            "income": [],
+            "budget": 0
         }
     },
     "current_user": null

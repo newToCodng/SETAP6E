@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 class IFinanceTracker(ABC):  # Interface for FinanceTracker
     @abstractmethod
-    def register(self, username: str, password: str) -> str:
+    def register(self, email: str, password: str, username: str, name: str, age: str) -> str:
         pass
 
     @abstractmethod
@@ -15,30 +15,30 @@ class IFinanceTracker(ABC):  # Interface for FinanceTracker
         pass
 
     @abstractmethod
-    def add_expense(self, category: str, amount: float) -> str:
+    def addExpense(self, category: str, amount: float) -> str:
         pass
 
     @abstractmethod
-    def add_income(self, source: str, amount: float) -> str:
+    def addIncome(self, source: str, amount: float) -> str:
         pass
 
     @abstractmethod
-    def set_budget(self, amount: float) -> str:
+    def setBudget(self, amount: float) -> str:
         pass
 
     @abstractmethod
-    def view_report(self) -> dict:
+    def viewReport(self) -> dict:
         pass
 
     @abstractmethod
-    def get_current_user(self) -> str:
+    def getCurrentUser(self) -> str:
         """Returns the currently logged-in user or None."""
         pass
 
     @abstractmethod
-    def save_data(self) -> str:
+    def saveData(self) -> str:
         pass
 
     @abstractmethod
-    def user_exists(self, username: str) -> object:  # New method to check if a user exists
+    def userExists(self, username: str) -> object:  # New method to check if a user exists
         pass
