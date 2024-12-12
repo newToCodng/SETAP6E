@@ -6,75 +6,44 @@ class FinanceTrackerApp:
     def __init__(self, tracker: IFinanceTracker):
         self.tracker = tracker  # Aggregation: App uses a tracker instance
 
-    def printError(self, message: str):
+    def print_error(self, message: str):
         print(f"❌ {message}")
 
-    def handleLoginCheck(self):
+    def handle_login_check(self):
         # If user is logged in, proceed to the main menu
         if self.tracker.getCurrentUser():
             return True
         return False
 
-    def registerUser(self):
-        max_attempts = 5
-        while True:
-            attempts = 0
-            while attempts < max_attempts:
-                email = input("Enter email: ").strip()
-                if "@" not in email or "." not in email.split("@")[-1]:
-                    self.printError("Invalid email format. Please try again")
-                    attempts += 1
-                    continue
+    def register_user(self):
+        attempts = 0
+        while attempts < 5:
+            username = input("Enter username: ")
+            if self.tracker.userExists(username):
+                self.print_error("Username already exists. Please try a different username.")
+                attempts += 1
+            else:
+                password = input("Enter password: ")
+                registration_message = self.tracker.register(username, password)
+                print(registration_message)
 
-                if self.tracker.userExists(email):
-                    self.printError("Email already registered. Please try again.")
-                    attempts += 1
-                    continue
-
-                username = input("Enter username: ").strip()
-                if self.tracker.userExists(username):
-                    self.printError("Username already exists. Please try a different username.")
-                    attempts += 1
-                else:
-                    name = input("Enter your full name: ").strip()
-                    if not name:
-                        self.printError("Name cannot be empty. Please try again.")
-                        attempts += 1
-                        continue
-
-                    try:
-                        age = int(input("Enter your age: ").strip())
-                        if age <= 0:
-                            raise ValueError
-                    except ValueError:
-                        self.printError("Age must be a valid positive number. Please try again.")
-                        attempts += 1
-                        continue
-
-                    password = input("Enter password: ")
-                    registration_message = self.tracker.register(email = email, username=username, password=password, name=name,
-                                                                 age=age)
-                    print(registration_message)
-
-                    if "✅ Registration successful." in registration_message:
-                        # Automatically log in after successful registration
-                        print("Logging you in...")
-                        loginMessage = self.tracker.login(username, password)
-                        print(loginMessage)
-                        return  # Exit the function after successful registration and login
-                    break  # Exit inner loop after successful registration
-
-            # Handle exceeded attempts
-            if attempts >= max_attempts:
-                self.printError("You have exceeded the maximum attempts.")
-                continueRegistration = input("Would you like to try again? (y/n): ").lower()
-                if continueRegistration != 'y':
+                if "✅ Registration successful." in registration_message:
+                    # Automatically log in after successful registration
+                    print("Logging you in...")
+                    login_message = self.tracker.login(username, password)
+                    print(login_message)
+                    break  # Exit the registration loop and go to the main menu
+            if attempts >= 5:
+                self.print_error("You have exceeded the maximum attempts.")
+                continue_registration = input("Would you like to try again? (y/n): ")
+                if continue_registration.lower() != 'y':
                     print("Exiting...")
-                    return  # Exit the function completely if the user doesn't want to retry
+                    break
+                attempts = 0  # Reset attempts if they want to try again
 
     def run(self):
         while True:
-            if not self.handleLoginCheck():  # Check if user is logged in
+            if not self.handle_login_check():  # Check if user is logged in
                 print("\n--- Personal Finance Tracker ---")
                 print("Welcome!")
                 print("1. Register")
@@ -83,18 +52,16 @@ class FinanceTrackerApp:
                 choice = input("Choose an option: ")
 
                 if choice == '1':
-                    self.registerUser()
+                    self.register_user()
                 elif choice == '2':
-                    username = input("Enter username or email: ")
+                    username = input("Enter username: ")
                     password = input("Enter password: ")
                     print(self.tracker.login(username, password))
-                    if self.tracker.getCurrentUser():  # Check if the user is logged in
-                        print(f"Logged in as: {self.tracker.getCurrentUser()}")
                 elif choice == '3':
                     print("Exiting the application.")
                     break
                 else:
-                    self.printError("Invalid choice. Please try again.")
+                    self.print_error("Invalid choice. Please try again.")
             else:
                 print(f"\nWelcome, {self.tracker.getCurrentUser()}!")
                 print("--- Personal Finance Tracker ---")
@@ -114,20 +81,20 @@ class FinanceTrackerApp:
                         amount = float(input("Enter expense amount: "))
                         print(self.tracker.addExpense(category, amount))
                     except ValueError:
-                        self.printError("Invalid amount. Please enter a valid number.")
+                        self.print_error("Invalid amount. Please enter a valid number.")
                 elif choice == '3':
                     source = input("Enter income source: ")
                     try:
                         amount = float(input("Enter income amount: "))
                         print(self.tracker.addIncome(source, amount))
                     except ValueError:
-                        self.printError("Invalid amount. Please enter a valid number.")
+                        self.print_error("Invalid amount. Please enter a valid number.")
                 elif choice == '4':
                     try:
                         amount = float(input("Enter budget amount: "))
                         print(self.tracker.setBudget(amount))
                     except ValueError:
-                        self.printError("Invalid amount. Please enter a valid number.")
+                        self.print_error("Invalid amount. Please enter a valid number.")
                 elif choice == '5':
                     report = self.tracker.viewReport()
                     print("\n--- Financial Report ---")
@@ -137,4 +104,4 @@ class FinanceTrackerApp:
                     print("Exiting the application.")
                     break
                 else:
-                    self.printError("Invalid choice. Please try again.")
+                    self.print_error("Invalid choice. Please try again.")
