@@ -3,7 +3,6 @@ import json
 import os
 from datetime import datetime
 import bcrypt
-import re
 
 
 class FinanceTracker(IFinanceTracker):
@@ -69,7 +68,7 @@ class FinanceTracker(IFinanceTracker):
         self.saveData()
         return "✅ Registration successful."
 
-    import re
+    
 
     def login(self, usernameORemail, password):
         print(f"Login attempt with username/email: {usernameORemail}")
@@ -79,10 +78,10 @@ class FinanceTracker(IFinanceTracker):
             # Now check if the user exists in the data
             user = None
             # Check if it's an email or username
-            if '@' in usernameORemail:  # Assuming an email contains '@'
-                user = self.data['users'].get(usernameORemail)
-            else:
-                user = next((user for user in self.data['users'].values() if user.get('username' == usernameORemail)), None)
+            for email, userData in self.data['users'].items():
+            if (isEmail and email == identifier) or (not isEmail and userData['username'] == identifier):
+                user = userData
+                break
 
             if user:
                 print(f"User found: {usernameORemail}")
