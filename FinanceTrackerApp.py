@@ -66,7 +66,7 @@ class FinanceTrackerApp:
                 if self.tracker.userExists(username):
                     self.printError(ErrorMessages.getMessage("usernameExists"))
                     attempts += 1
-                    username = None # resets username to retry
+                    username = None  # resets username to retry
                     continue
 
             name = self.promptInput("Enter your full name: ", lambda x: x, ErrorMessages.getMessage("emptyFields"))
