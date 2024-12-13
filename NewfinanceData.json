@@ -1,0 +1,55 @@
+{
+    "users": {
+        "abdul@gmail.com": {
+            "username": "abdul",
+            "email": "abdul@gmail.com",
+            "password": "$2b$12$aPFjv35FitoIRy46xJgvm.qrhmopfRiBFH30vcJ/y4JoXHTBy1O.u",
+            "name": "Abdulbasit MuhammedJamiu",
+            "age": "20",
+            "expenses": [
+                {
+                    "category": "car",
+                    "amount": 200.0
+                }
+            ],
+            "income": [
+                {
+                    "source": "salary",
+                    "amount": 300.0
+                }
+            ],
+            "budget": 400.0
+        },
+        "abdul@hotmail.com": {
+            "username": "abdul",
+            "email": "abdul@hotmail.com",
+            "password": "$2b$12$wMVnBce5Lcu/LLf3yVQMvuNb59xTxxpp.wzLdDCxrpCCJZaQryf1S",
+            "name": "Abdul",
+            "age": "22",
+            "expenses": [],
+            "income": [],
+            "budget": 0
+        },
+        "abdul@gamil.com": {
+            "username": "abdul1",
+            "email": "abdul@gamil.com",
+            "password": "$2b$12$fOH2kdnYuyUOJhtUkdp3MerLbou5XseaIuoODGzsra8EQe6aPRlxq",
+            "name": "Abdulbasit",
+            "age": "22",
+            "expenses": [],
+            "income": [],
+            "budget": 0
+        },
+        "abu@gmail.com": {
+            "username": "abu",
+            "email": "abu@gmail.com",
+            "password": "$2b$12$lmvt1VHt92pLdbkodizXdumAENlYa4h.omyA.cK814xXf.PuDqYYW",
+            "name": "Abusufyan",
+            "age": "18",
+            "expenses": [],
+            "income": [],
+            "budget": 0
+        }
+    },
+    "currentUser": "abu@gmail.com"
+}

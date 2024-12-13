@@ -2,8 +2,18 @@
     "users": {
         "abdul": {
             "password": "Naruto1234",
-            "expenses": [],
-            "income": [],
+            "expenses": [
+                {
+                    "category": "tight budget",
+                    "amount": 25.0
+                }
+            ],
+            "income": [
+                {
+                    "source": "Salary",
+                    "amount": 300.0
+                }
+            ],
             "budget": 0
         },
         "Naruto": {
@@ -43,7 +53,29 @@
             "expenses": [],
             "income": [],
             "budget": 0
+        },
+        "abdul@gmail.com": {
+            "username": "abdul",
+            "email": "abdul@gmail.com",
+            "password": "$2b$12$Q9gG8O3V9ICoWsk/fQ8QVem0d9JyqBdXcZlVAcy9B6Kn9IMttHMT2",
+            "name": "Abdulbasit",
+            "age": "20",
+            "expenses": [],
+            "income": [],
+            "budget": 0
+        },
+        "abdul@gamil.com": {
+            "username": "abdul",
+            "email": "abdul@gamil.com",
+            "password": "$2b$12$eFjhVJgKf3pA5wYAc9qMSOUl9k9PA4Pj4gRfKkob1hD56S5qSGvJa",
+            "name": "Abusufyan",
+            "age": "18",
+            "expenses": [],
+            "income": [],
+            "budget": 0
+
         }
     },
-    "current_user": null
+    "current_user": null,
+    "currentUser": "abdul"
 }
